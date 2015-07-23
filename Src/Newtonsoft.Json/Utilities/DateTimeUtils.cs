@@ -50,7 +50,7 @@ namespace Newtonsoft.Json.Utilities
 
         public static TimeSpan GetUtcOffset(this DateTime d)
         {
-#if NET20
+#if true
             return TimeZone.CurrentTimeZone.GetUtcOffset(d);
 #else
             return TimeZoneInfo.Local.GetUtcOffset(d);
@@ -199,7 +199,7 @@ namespace Newtonsoft.Json.Utilities
             DateTime d = new DateTime(dateTimeParser.Year, dateTimeParser.Month, dateTimeParser.Day, dateTimeParser.Hour, dateTimeParser.Minute, dateTimeParser.Second);
             d = d.AddTicks(dateTimeParser.Fraction);
 
-#if !NET20
+#if false
             if (dateParseHandling == DateParseHandling.DateTimeOffset)
             {
                 TimeSpan offset;

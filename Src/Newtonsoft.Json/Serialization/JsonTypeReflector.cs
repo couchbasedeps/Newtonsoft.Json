@@ -355,7 +355,7 @@ namespace Newtonsoft.Json.Serialization
             {
                 if (_dynamicCodeGeneration == null)
                 {
-#if !(NETFX_CORE || PORTABLE40 || PORTABLE)
+#if false
                     try
                     {
                         new ReflectionPermission(ReflectionPermissionFlag.MemberAccess).Demand();
