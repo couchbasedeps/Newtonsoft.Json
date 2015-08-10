@@ -249,8 +249,8 @@ namespace Newtonsoft.Json.Serialization
                 {
                     cache = state.ContractCache;
                     Dictionary<ResolverContractKey, JsonContract> updatedCache = (cache != null)
-                        ? new Dictionary<ResolverContractKey, JsonContract>(cache)
-                        : new Dictionary<ResolverContractKey, JsonContract>();
+                        ? new Dictionary<ResolverContractKey, JsonContract>(cache, new System.Collections.Generic.Couchbase.GenericEqualityComparer<ResolverContractKey>())
+                        : new Dictionary<ResolverContractKey, JsonContract>(new System.Collections.Generic.Couchbase.GenericEqualityComparer<ResolverContractKey>());
                     updatedCache[key] = contract;
 
                     state.ContractCache = updatedCache;
