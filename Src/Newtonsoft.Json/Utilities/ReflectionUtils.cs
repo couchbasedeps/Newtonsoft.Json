@@ -483,7 +483,7 @@ namespace Newtonsoft.Json.Utilities
                 case MemberTypes.Property:
                     try
                     {
-                        return ((PropertyInfo)member).GetValue(target, null);
+                        return ((PropertyInfo)member).GetGetMethod().Invoke(target, null);
                     }
                     catch (TargetParameterCountException e)
                     {
@@ -511,7 +511,7 @@ namespace Newtonsoft.Json.Utilities
                     ((FieldInfo)member).SetValue(target, value);
                     break;
                 case MemberTypes.Property:
-                    ((PropertyInfo)member).SetValue(target, value, null);
+                    ((PropertyInfo)member).GetSetMethod().Invoke(target, new object[]{ value });
                     break;
                 default:
                     throw new ArgumentException("MemberInfo '{0}' must be of type FieldInfo or PropertyInfo".FormatWith(CultureInfo.InvariantCulture, member.Name), "member");

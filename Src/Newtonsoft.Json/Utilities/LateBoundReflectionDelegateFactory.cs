@@ -88,7 +88,7 @@ namespace Newtonsoft.Json.Utilities
         {
             ValidationUtils.ArgumentNotNull(propertyInfo, "propertyInfo");
 
-            return o => propertyInfo.GetValue(o, null);
+            return o => propertyInfo.GetGetMethod().Invoke(o, null);
         }
 
         public override Func<T, object> CreateGet<T>(FieldInfo fieldInfo)
@@ -109,7 +109,7 @@ namespace Newtonsoft.Json.Utilities
         {
             ValidationUtils.ArgumentNotNull(propertyInfo, "propertyInfo");
 
-            return (o, v) => propertyInfo.SetValue(o, v, null);
+            return (o, v) => propertyInfo.GetSetMethod().Invoke(o, new object[]{v});
         }
     }
 }
