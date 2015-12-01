@@ -217,7 +217,11 @@ namespace Newtonsoft.Json.Serialization
 #if !(NETFX_CORE || PORTABLE40 || PORTABLE)
         public static TypeConverter GetTypeConverter(Type type)
         {
-            return TypeDescriptor.GetConverter(type);
+            try {
+                return TypeDescriptor.GetConverter(type);
+            } catch(MissingMethodException) {
+                return new TypeConverter(); // Workaround for Unity IL2CPP
+            }
         }
 #endif
 
