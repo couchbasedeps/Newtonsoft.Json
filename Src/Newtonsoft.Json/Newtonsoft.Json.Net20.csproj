@@ -264,6 +264,8 @@
     <Compile Include="Utilities\ValidationUtils.cs" />
     <Compile Include="WriteState.cs" />
     <Compile Include="Utilities\Comparers.cs" />
+    <Compile Include="Utilities\AddingNewEventHandler.cs" />
+    <Compile Include="Utilities\AddingNewEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

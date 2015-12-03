@@ -58,7 +58,7 @@ namespace Newtonsoft.Json.Linq
     {
 #if !(NETFX_CORE || PORTABLE40 || PORTABLE)
         internal ListChangedEventHandler _listChanged;
-        internal AddingNewEventHandler _addingNew;
+        internal System.ComponentModel.Couchbase.AddingNewEventHandler _addingNew;
 
         /// <summary>
         /// Occurs when the list changes or an item in the list changes.
@@ -72,7 +72,7 @@ namespace Newtonsoft.Json.Linq
         /// <summary>
         /// Occurs before an item is added to the collection.
         /// </summary>
-        public event AddingNewEventHandler AddingNew
+        public event System.ComponentModel.Couchbase.AddingNewEventHandler AddingNew
         {
             add { _addingNew += value; }
             remove { _addingNew -= value; }
@@ -136,10 +136,10 @@ namespace Newtonsoft.Json.Linq
         /// <summary>
         /// Raises the <see cref="AddingNew"/> event.
         /// </summary>
-        /// <param name="e">The <see cref="AddingNewEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnAddingNew(AddingNewEventArgs e)
+        /// <param name="e">The <see cref="System.ComponentModel.Couchbase.AddingNewEventArgs"/> instance containing the event data.</param>
+        protected virtual void OnAddingNew(System.ComponentModel.Couchbase.AddingNewEventArgs e)
         {
-            AddingNewEventHandler handler = _addingNew;
+            System.ComponentModel.Couchbase.AddingNewEventHandler handler = _addingNew;
             if (handler != null)
                 handler(this, e);
         }
@@ -967,7 +967,7 @@ namespace Newtonsoft.Json.Linq
 
         object IBindingList.AddNew()
         {
-            AddingNewEventArgs args = new AddingNewEventArgs();
+            System.ComponentModel.Couchbase.AddingNewEventArgs args = new System.ComponentModel.Couchbase.AddingNewEventArgs();
             OnAddingNew(args);
 
             if (args.NewObject == null)
